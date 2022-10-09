@@ -18,19 +18,16 @@ function MouseHand(){
             this.first = true;
             this.second = false;
             this.third = false;
-            console.log(this.first);
         }
         else if(mouseX < 830 && mouseX > 770){
             this.first = false;
             this.second = true;
             this.third = false;
-            console.log(this.second);
         }
         else if(mouseX < 930 && mouseX > 870){
             this.first = false;
             this.second = false;
             this.third = true;
-            console.log(this.third);
         }
         else{
             this.first = false;
@@ -38,7 +35,8 @@ function MouseHand(){
             this.third = false;
         }
     }
-    this.recovery = function(PartyM){
-        PartyM.mana += 1;
+    this.recovery = function(PartyM,PartyB){
+        PartyM.health += 1;
+        PartyB.mana -= 1;
     }
 }

@@ -1,6 +1,6 @@
 function PartyM(x,y,p){
 this.health = 0;
-this.mana = 0;
+this.mana = 100;
 this.x = x;
 this.y = y;
 this.r = 30;

@@ -45,17 +45,24 @@ function HealPlayer(){
     if (mouseIsPressed === true) {
         if (mouseButton === LEFT) {
           for(i = 0; i < 4; i++){
-            if(hand.first == true && partyArray[i].position == 1){
-            hand.recovery(partyArray[i]);
-            console.log(partyArray[i].mana);
-             }
-            else if(hand.second == true && partyArray[i].position == 2){
-            hand.recovery(partyArray[i]);
-            console.log(partyArray[i].mana);
-            }
-            else if (hand.third == true && partyArray[i].position == 3){
-            hand.recovery(partyArray[i]);
-            console.log(partyArray[i].mana);
+            for(j = 0; j< 4; j++){
+                if(partyArray[j].position == 4){
+                    if(hand.first == true && partyArray[i].position == 1){
+                    hand.recovery(partyArray[i],partyArray[j]);
+                    //console.log(partyArray[i].health);
+                    console.log(partyArray[j].mana);
+                    }
+                    else if(hand.second == true && partyArray[i].position == 2){
+                    hand.recovery(partyArray[i],partyArray[j]);
+                    //console.log(partyArray[i].health);
+                    console.log(partyArray[j].mana);
+                    }
+                    else if (hand.third == true && partyArray[i].position == 3){
+                    hand.recovery(partyArray[i],partyArray[j]);
+                    //console.log(partyArray[i].health);
+                    console.log(partyArray[j].mana);
+                    }
+                }
             }
           }  
           
