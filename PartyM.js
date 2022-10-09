@@ -14,6 +14,15 @@ this.shovTank = false;
 this.pickATK = false;
 this.isDead = false;
 
+let period = 75;
+let half_period = period/2;
+let third_period = period/3;
+let fourth_period = period/4;
+let fifth_period = period/5;
+let sixth_period = period/6;
+let seventh_period = period/7;
+let eighth_period = period/8;
+
 
 this.ability = function(partyClicked,partyBack){
     if(!this.isDead){
@@ -93,17 +102,146 @@ this.show = function(){
 this.changeReso = function(w,h){
     if(this.position != 4){
         push();
+        noSmooth();
         if(this.name == "Lamp"){
-            image(lampmain,this.x-40,this.y-50,w,h);
+            if(frameCount % period < eighth_period)
+            {
+              image(lampi2,this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < seventh_period)
+            {
+              image(lampi3, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < sixth_period)
+            {
+              image(lampi4, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fifth_period)
+            {
+              image(lampi5, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fourth_period)
+            {
+              image(lampi6, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < third_period)
+            {
+             image(lampi7, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < half_period)
+            {
+             image(lampi8, this.x-40,this.y-50,w,h);
+            }
+          else
+            {
+              image(lampi1, this.x-40,this.y-50,w,h);
+            }
+            //image(lampmain,this.x-40,this.y-50,w,h);
         }
         else if(this.name == "Pick"){
-            image(pickmain,this.x-40,this.y-50,w,h);
+            if(frameCount % period < eighth_period)
+            {
+              image(picki2,this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < seventh_period)
+            {
+              image(picki3, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < sixth_period)
+            {
+              image(picki4, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fifth_period)
+            {
+              image(picki5, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fourth_period)
+            {
+              image(picki6, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < third_period)
+            {
+             image(picki7, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < half_period)
+            {
+             image(picki8, this.x-40,this.y-50,w,h);
+            }
+          else
+            {
+              image(picki1, this.x-40,this.y-50,w,h);
+            }
+            //image(pickmain,this.x-40,this.y-50,w,h);
         }
         else if(this.name == "Shov"){
-            image(shovmain,this.x-40,this.y-50,w,h);
+            if(frameCount % period < eighth_period)
+            {
+              image(shovi2,this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < seventh_period)
+            {
+              image(shovi3, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < sixth_period)
+            {
+              image(shovi4, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fifth_period)
+            {
+              image(shovi5, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fourth_period)
+            {
+              image(shovi6, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < third_period)
+            {
+             image(shovi7, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < half_period)
+            {
+             image(shovi8, this.x-40,this.y-50,w,h);
+            }
+          else
+            {
+              image(shovi1, this.x-40,this.y-50,w,h);
+            }
+            //image(shovmain,this.x-40,this.y-50,w,h);
         }
         else if(this.name == "Dyna"){
-            image(dynamain,this.x-40,this.y-50,w,h);
+            if(frameCount % period < eighth_period)
+            {
+              image(dynai1,this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < seventh_period)
+            {
+              image(dynai2, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < sixth_period)
+            {
+              image(dynai3, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fifth_period)
+            {
+              image(dynai4, this.x-40,this.y-50,w,h);
+            }
+          else if(frameCount % period < fourth_period)
+            {
+              image(dynai5, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < third_period)
+            {
+             image(dynai6, this.x-40,this.y-50,w,h);
+            }
+        else if(frameCount % period < half_period)
+            {
+             image(dynai7, this.x-40,this.y-50,w,h);
+            }
+          else
+            {
+              image(dynai8, this.x-40,this.y-50,w,h);
+            }
+            //image(dynamain,this.x-40,this.y-50,w,h);
         }
         pop();
         }

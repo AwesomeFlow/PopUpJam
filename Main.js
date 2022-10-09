@@ -22,6 +22,42 @@ function preload(){
     lampmain = loadImage("assets/characters/lamp.png");
     pickmain = loadImage("assets/characters/pick.png");
     shovmain = loadImage("assets/characters/shov.png");
+    //dyna
+    dynai1= loadImage("assets/anim/dyna_idle_1.png");
+    dynai2= loadImage("assets/anim/dyna_idle_2.png");
+    dynai3= loadImage("assets/anim/dyna_idle_3.png");
+    dynai4= loadImage("assets/anim/dyna_idle_4.png");
+    dynai5= loadImage("assets/anim/dyna_idle_5.png");
+    dynai6= loadImage("assets/anim/dyna_idle_6.png");
+    dynai7= loadImage("assets/anim/dyna_idle_7.png");
+    dynai8= loadImage("assets/anim/dyna_idle_8.png");
+    //lamp
+    lampi1= loadImage("assets/anim/lamp_idle_1.png");
+    lampi2= loadImage("assets/anim/lamp_idle_2.png");
+    lampi3= loadImage("assets/anim/lamp_idle_3.png");
+    lampi4= loadImage("assets/anim/lamp_idle_4.png");
+    lampi5= loadImage("assets/anim/lamp_idle_5.png");
+    lampi6= loadImage("assets/anim/lamp_idle_6.png");
+    lampi7= loadImage("assets/anim/lamp_idle_7.png");
+    lampi8= loadImage("assets/anim/lamp_idle_8.png");
+    //pick
+    picki1= loadImage("assets/anim/pick_idle_1.png");
+    picki2= loadImage("assets/anim/pick_idle_2.png");
+    picki3= loadImage("assets/anim/pick_idle_3.png");
+    picki4= loadImage("assets/anim/pick_idle_4.png");
+    picki5= loadImage("assets/anim/pick_idle_5.png");
+    picki6= loadImage("assets/anim/pick_idle_6.png");
+    picki7= loadImage("assets/anim/pick_idle_7.png");
+    picki8= loadImage("assets/anim/pick_idle_8.png");
+    //shov
+    shovi1= loadImage("assets/anim/shov_idle_1.png");
+    shovi2= loadImage("assets/anim/shov_idle_2.png");
+    shovi3= loadImage("assets/anim/shov_idle_3.png");
+    shovi4= loadImage("assets/anim/shov_idle_4.png");
+    shovi5= loadImage("assets/anim/shov_idle_5.png");
+    shovi6= loadImage("assets/anim/shov_idle_6.png");
+    shovi7= loadImage("assets/anim/shov_idle_7.png");
+    shovi8= loadImage("assets/anim/shov_idle_8.png");
 }
 
 function setup() {
