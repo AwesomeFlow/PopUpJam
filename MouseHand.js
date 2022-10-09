@@ -14,13 +14,31 @@ function MouseHand(){
         }
 
     this.position = function(){
-        if(mouseX < 750){
+        if(mouseX < 730 && mouseX > 670){
             this.first = true;
+            this.second = false;
+            this.third = false;
             console.log(this.first);
+        }
+        else if(mouseX < 830 && mouseX > 770){
+            this.first = false;
+            this.second = true;
+            this.third = false;
+            console.log(this.second);
+        }
+        else if(mouseX < 930 && mouseX > 870){
+            this.first = false;
+            this.second = false;
+            this.third = true;
+            console.log(this.third);
+        }
+        else{
+            this.first = false;
+            this.second = false;
+            this.third = false;
         }
     }
     this.recovery = function(PartyM){
-        PartyM.mana +1;
-        console.log(PartyM.mana);
+        PartyM.mana += 1;
     }
 }

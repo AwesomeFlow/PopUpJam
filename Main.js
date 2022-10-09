@@ -21,7 +21,7 @@ function setup() {
 function draw(){
     background(255);
     hand.show();
-    hand.position();
+    HealPlayer();
     SummonParty();
     
     ChangeSpots();
@@ -36,9 +36,32 @@ function SummonParty(){
 
 function bossAttack(){
     harmpos=random(0,2);
+    PartyM.health[harmpos]=PartyM.health[harmpos]-damage;
     setTimeout(bossAttack,5000);
 }
 
+function HealPlayer(){
+    hand.position();
+    if (mouseIsPressed === true) {
+        if (mouseButton === LEFT) {
+          for(i = 0; i < 4; i++){
+            if(hand.first == true && partyArray[i].position == 1){
+            hand.recovery(partyArray[i]);
+            console.log(partyArray[i].mana);
+             }
+            else if(hand.second == true && partyArray[i].position == 2){
+            hand.recovery(partyArray[i]);
+            console.log(partyArray[i].mana);
+            }
+            else if (hand.third == true && partyArray[i].position == 3){
+            hand.recovery(partyArray[i]);
+            console.log(partyArray[i].mana);
+            }
+          }  
+          
+        }
+    }
+}
 
 function ChangeSpots(){
     if (keyIsPressed) {
