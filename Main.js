@@ -17,18 +17,18 @@ function setup() {
 function draw(){
     background(255);
     hand.show();
-    partym1.show();
-    partym2.show();
-    partym3.show();
-    partym4.show();
+    hand.position();
+    SummonParty();
     
     ChangeSpots();
 }
 
-/*function SummonParty(PartyM){
-    for(var i = 0; i < 4; i++){
-    }
-}*/
+function SummonParty(){
+    partym1.show();
+    partym2.show();
+    partym3.show();
+    partym4.show();
+}
 
 function ChangeSpots(){
     if (keyIsPressed) {
