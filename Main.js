@@ -15,6 +15,13 @@ var damage = 20;
 var totalAttack = 0;
 
 
+function preload(){
+    backmap = loadImage("assets/Background.png");
+    dynamain = loadImage("assets/characters/dyna.png");
+    lampmain = loadImage("assets/characters/lamp.png");
+    pickmain = loadImage("assets/characters/pick.png");
+    shovmain = loadImage("assets/characters/shov.png");
+}
 
 function setup() {
     createCanvas(960, 540);
@@ -30,7 +37,7 @@ function setup() {
    }
 
 function draw(){
-    background(200);
+    background(backmap);
     console.log(playerhit);
     hand.show();
     PlayerPower();
