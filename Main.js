@@ -1,5 +1,5 @@
-var firstSpot = [450,350];
-var secondSpot = [575,350];
+var firstSpot = [410,350];
+var secondSpot = [555,350];
 var thirdSpot = [700,350];
 var backSpot = [850,500];
 var names = ["Shov","Pick","Dyna","Lamp"];
@@ -9,11 +9,19 @@ var bossHealth = 2000;
 var isTaunted = false;
 var dmgDown = false;
 var atkUp = false;
+var gameover = false;
 var harmpos;
 var playerhit;
 var damage = 80;
 var totalAttack = 0;
 
+function preload(){
+    backmap = loadImage("assets/Background.png");
+    dynamain = loadImage("assets/characters/dyna.png");
+    lampmain = loadImage("assets/characters/lamp.png");
+    pickmain = loadImage("assets/characters/pick.png");
+    shovmain = loadImage("assets/characters/shov.png");
+}
 
 function setup() {
     createCanvas(960, 540);
@@ -35,6 +43,10 @@ function draw(){
     PlayerPower();
     SummonParty();
     ResourceBars(bossHealth);
+    gameover = Lose();
+    if(gameover){
+        
+    }
 }
 
 function SummonParty(){
@@ -48,10 +60,13 @@ function bossAttack(){
     if(!isTaunted){
         harmpos = round(random(0,3));
         playerhit = CheckTheLoop(harmpos);
-        partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
             //SwitchPlayer(playerhit);
+            partyArray[playerhit].health = 0;
             partyArray[playerhit].isDead = true;
+        }
+        else{
+        partyArray[playerhit].health -= damage;
         }
         console.log(harmpos);
         console.log(partyArray[playerhit].health);
@@ -60,10 +75,13 @@ function bossAttack(){
     else if (isTaunted){
         playerhit = isClickedPos;
         console.log(isTaunted);
-        partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
             //SwitchPlayer(playerhit);
+            partyArray[playerhit].health = 0;
             partyArray[playerhit].isDead = true;
+        }
+        else{
+        partyArray[playerhit].health -= damage;
         }
         console.log(playerhit);
         console.log(partyArray[playerhit].health);
@@ -79,11 +97,14 @@ function bossAttack(){
         setTimeout(bossAttack,4000);
         }
         else{
-        partyArray[playerhit].health -= damage;
-        if(partyArray[playerhit].health <= 0){
-            //SwitchPlayer(playerhit);
-            partyArray[playerhit].isDead = true;
-        }
+            if(partyArray[playerhit].health <= 0){
+                //SwitchPlayer(playerhit);
+                partyArray[playerhit].health = 0;
+                partyArray[playerhit].isDead = true;
+            }
+            else{
+            partyArray[playerhit].health -= damage;
+            }
         console.log(playerhit);
         console.log(partyArray[playerhit].health);
         setTimeout(bossAttack,5000);
@@ -162,6 +183,7 @@ function PlayerPower(){
 }
 
 function ResourceBars(Bhealth){
+    fill('red');
     rect(200, 200, Bhealth, 10);
 }
 
@@ -246,4 +268,12 @@ function SwitchPlayer(bossPush){
             console.log(partyArray[i].x + partyArray[i.y]);
         }
     }
+}
+
+function Lose(){
+    for(i = 0; i < 4; i++){
+        if(partyArray[i].isDead == false)
+            return false;
+    }
+    return true;
 }

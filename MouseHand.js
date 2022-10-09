@@ -10,29 +10,29 @@ function MouseHand(){
     this.show = function(){
         noStroke();
         fill(this.SpriteColor);
-        if(mouseX >= 420 && mouseX <= 730){
-            ellipse(mouseX, 400, this.r * 2, this.r * 2);
+        if(mouseX >= 380 && mouseX <= 760){
+            ellipse(mouseX, 500, this.r * 2, this.r * 2);
             }
-        else if(mouseX < 420){
-            ellipse(420, 400, this.r * 2, this.r * 2);
+        else if(mouseX < 380){
+            ellipse(380, 500, this.r * 2, this.r * 2);
             }
-        else if(mouseX > 730){
-            ellipse(730, 400, this.r * 2, this.r * 2);
+        else if(mouseX > 760){
+            ellipse(760, 500, this.r * 2, this.r * 2);
             }
         }
 
     this.position = function(){
-        if(mouseX < 530 && mouseX > 420){
+        if(mouseX < 470 && mouseX > 410){
             this.first = true;
             this.second = false;
             this.third = false;
         }
-        else if(mouseX < 630 && mouseX > 545){
+        else if(mouseX < 615 && mouseX > 555){
             this.first = false;
             this.second = true;
             this.third = false;
         }
-        else if(mouseX < 730 && mouseX > 670){
+        else if(mouseX < 760 && mouseX > 700){
             this.first = false;
             this.second = false;
             this.third = true;

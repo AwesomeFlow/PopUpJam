@@ -5,7 +5,7 @@ this.atk = 5;
 this.doubldATK = 10;
 this.x = x;
 this.y = y;
-this.r = 30;
+this.resolution = 1;
 this.position = p;
 this.SpriteColor = color(random(25,255), random(25, 255) , random(25, 255), 128);
 this.name = name;
@@ -16,7 +16,7 @@ this.isDead = false;
 
 
 this.ability = function(partyClicked,partyBack){
-    if(!isDead){
+    if(!this.isDead){
         if(this.mana > 0){
             partyBack.mana -= 1;
             if(this.name == "Lamp"){
@@ -49,11 +49,7 @@ this.ability = function(partyClicked,partyBack){
 }
 
 this.show = function(){
-    push();
-    //noStroke();
-    //fill(this.SpriteColor);
-    //ellipse(this.x,this.y, this.r * 2, this.r * 2);
-    //image(imagevariable,this.x,this.y);
+    /*push();
     if(this.name == "Lamp"){
         image(lampmain,this.x-30,this.y-50);
     }
@@ -78,13 +74,79 @@ this.show = function(){
     noStroke();
     fill(this.SpriteColor);
     rect(this.x - 30, this.y - 50, this.mana, 10);
-    pop();
+    pop();*/
 
-    if(this.position != 4 && this.mana <= 100){
+    if(this.position != 4){
+        this.changeReso(144,144);
+        push();
+        noStroke();
+        fill('red');
+        rect(this.x - 30, this.y - 65, this.health, 10);
+        pop();
+    
+        push();
+        noStroke();
+        fill('blue');
+        rect(this.x - 30, this.y - 50, this.mana, 10);
+        pop();
+    }
+    else if(this.position == 4){
+        this.changeReso(288,288);
+        
+        push();
+        noStroke();
+        fill('red');
+        rect(this.x, this.y - 150, this.health, 10);
+        pop();
+    
+        push();
+        noStroke();
+        fill('blue');
+        rect(this.x, this.y - 135, this.mana, 10);
+        pop();
+    }
+    
+    if(this.position != 4 && this.mana <= 100 && !this.isDead){
         this.mana += .1;
         }
-    else if(this.position == 4 && this.health <= 100){
+    else if(this.position == 4 && this.health <= 100 && !this.isDead){
         this.health += .1;
+        }
+
+}
+
+this.changeReso = function(w,h){
+    if(this.position != 4){
+        push();
+        if(this.name == "Lamp"){
+            image(lampmain,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Pick"){
+            image(pickmain,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Shov"){
+            image(shovmain,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Dyna"){
+            image(dynamain,this.x-40,this.y-50,w,h);
+        }
+        pop();
+        }
+    else if(this.position == 4){
+        push();
+        if(this.name == "Lamp"){
+            image(lampmain,this.x-100,this.y-150,w,h);
+        }
+        else if(this.name == "Pick"){
+            image(pickmain,this.x-100,this.y-150,w,h);
+        }
+        else if(this.name == "Shov"){
+            image(shovmain,this.x-100,this.y-150,w,h);
+        }
+        else if(this.name == "Dyna"){
+            image(dynamain,this.x-100,this.y-150,w,h);
+        }
+        pop();
         }
     }
 }
