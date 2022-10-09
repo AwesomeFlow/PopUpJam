@@ -14,7 +14,7 @@ this.shovTank = false;
 this.pickATK = false;
 this.isDead = false;
 
-let period = 75;
+let period = 60;
 let half_period = period/2;
 let third_period = period/3;
 let fourth_period = period/4;
@@ -169,7 +169,7 @@ this.changeReso = function(w,h){
             }
           else
             {
-              image(picki1, this.x-40,this.y-50,w,h);
+              image(pickmain, this.x-40,this.y-50,w,h);
             }
             //image(pickmain,this.x-40,this.y-50,w,h);
         }
@@ -202,7 +202,7 @@ this.changeReso = function(w,h){
             {
              image(shovi8, this.x-40,this.y-50,w,h);
             }
-          else
+          else if (frameCount % period)
             {
               image(shovi1, this.x-40,this.y-50,w,h);
             }
@@ -231,11 +231,11 @@ this.changeReso = function(w,h){
             }
         else if(frameCount % period < third_period)
             {
-             image(dynai6, this.x-40,this.y-50,w,h);
+             image(dynai7, this.x-40,this.y-50,w,h);
             }
         else if(frameCount % period < half_period)
             {
-             image(dynai7, this.x-40,this.y-50,w,h);
+             image(dynai6, this.x-40,this.y-50,w,h);
             }
           else
             {
