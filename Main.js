@@ -59,6 +59,11 @@ function preload(){
     shovi6= loadImage("assets/anim/shov_idle_6.png");
     shovi7= loadImage("assets/anim/shov_idle_7.png");
     shovi8= loadImage("assets/anim/shov_idle_8.png");
+    //dead
+    shovdead= loadImage("assets/shov_dead.png");
+    pickdead= loadImage("assets/pick_dead.png");
+    lampdead= loadImage("assets/lamp_dead.png");
+    dynadead= loadImage("assets/dyna_dead.png");
 }
 
 function setup() {
