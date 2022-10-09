@@ -14,14 +14,14 @@ this.shovTank = false;
 this.pickATK = false;
 this.isDead = false;
 
-let period = 75;
-let half_period = period/2;
-let third_period = period/3;
-let fourth_period = period/4;
-let fifth_period = period/5;
-let sixth_period = period/6;
-let seventh_period = period/7;
-let eighth_period = period/8;
+let period = 50;
+let half_period = 43.75;
+let third_period = 37.5;
+let fourth_period = 31.25;
+let fifth_period = 25;
+let sixth_period = 18.75;
+let seventh_period = 12.5;
+let eighth_period = 6.25;
 
 
 this.ability = function(partyClicked,partyBack){
@@ -107,7 +107,10 @@ this.changeReso = function(w,h){
     if(this.position != 4){
         push();
         noSmooth();
-        if(this.name == "Lamp"){
+        if(this.name == "Lamp" && this.isDead==true){
+          image(lampdead,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Lamp" && this.isDead==false){
             if(frameCount % period < eighth_period)
             {
               image(lampi2,this.x-40,this.y-50,w,h);
@@ -142,7 +145,10 @@ this.changeReso = function(w,h){
             }
             //image(lampmain,this.x-40,this.y-50,w,h);
         }
-        else if(this.name == "Pick"){
+        else if(this.name == "Pick" && this.isDead==true){
+          image(pickdead,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Pick" && this.isDead==false){
             if(frameCount % period < eighth_period)
             {
               image(picki2,this.x-40,this.y-50,w,h);
@@ -173,11 +179,14 @@ this.changeReso = function(w,h){
             }
           else
             {
-              image(picki1, this.x-40,this.y-50,w,h);
+              image(pickmain, this.x-40,this.y-50,w,h);
             }
             //image(pickmain,this.x-40,this.y-50,w,h);
         }
-        else if(this.name == "Shov"){
+        else if(this.name == "Shov" && this.isDead==true){
+          image(shovdead,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Shov" && this.isDead==false){
             if(frameCount % period < eighth_period)
             {
               image(shovi2,this.x-40,this.y-50,w,h);
@@ -206,13 +215,16 @@ this.changeReso = function(w,h){
             {
              image(shovi8, this.x-40,this.y-50,w,h);
             }
-          else
+          else if (frameCount % period)
             {
               image(shovi1, this.x-40,this.y-50,w,h);
             }
             //image(shovmain,this.x-40,this.y-50,w,h);
         }
-        else if(this.name == "Dyna"){
+        else if(this.name == "Lamp" && this.isDead==true){
+          image(dynadead,this.x-40,this.y-50,w,h);
+        }
+        else if(this.name == "Dyna" && this.isDead==false){
             if(frameCount % period < eighth_period)
             {
               image(dynai1,this.x-40,this.y-50,w,h);

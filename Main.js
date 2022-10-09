@@ -17,11 +17,12 @@ var damage = 40;
 var totalAttack = 0;
 
 function preload(){
-    backmap = loadImage("assets/Background.png");
+    backmap = loadImage("assets/background.png");
     dynamain = loadImage("assets/characters/dyna.png");
     lampmain = loadImage("assets/characters/lamp.png");
     pickmain = loadImage("assets/characters/pick.png");
     shovmain = loadImage("assets/characters/shov.png");
+    monster = loadImage("assets/monsto.png");
     //dyna
     dynai1= loadImage("assets/anim/dyna_idle_1.png");
     dynai2= loadImage("assets/anim/dyna_idle_2.png");
