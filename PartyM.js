@@ -14,12 +14,6 @@ this.shovTank = false;
 this.pickATK = false;
 this.isDead = false;
 
-//function preload(){
-//    dynamain = loadImage("assets/characters/dyna.png");
-//    lampmain = loadImage("assets/characters/lamp.png");
-//    pickmain = loadImage("assets/characters/pick.png");
-//    shovmain = loadImage("assets/characters/shov.png");
-//}
 
 this.ability = function(partyClicked,partyBack){
     if(this.mana > 0){
@@ -57,16 +51,16 @@ this.show = function(){
     //ellipse(this.x,this.y, this.r * 2, this.r * 2);
     //image(imagevariable,this.x,this.y);
     if(this.name == "Lamp"){
-        image(lampmain,this.x,this.y);
+        image(lampmain,this.x-30,this.y-50);
     }
     else if(this.name == "Pick"){
-        image(pickmain,this.x,this.y);
+        image(pickmain,this.x-40,this.y-50);
     }
     else if(this.name == "Shov"){
-        image(shovmain,this.x,this.y);
+        image(shovmain,this.x-60,this.y-50);
     }
     else if(this.name == "Dyna"){
-        image(dynamain,this.x,this.y);
+        image(dynamain,this.x-30,this.y-50);
     }
     pop();
     
