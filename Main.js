@@ -12,7 +12,7 @@ var atkUp = false;
 var gameover = false;
 var harmpos;
 var playerhit;
-var damage = 80;
+var damage = 40;
 var totalAttack = 0;
 
 function preload(){
@@ -32,7 +32,7 @@ function setup() {
     partym3 = new PartyM(thirdSpot[0],thirdSpot[1], 3, names[2]);
     partym4 = new PartyM(backSpot[0],backSpot[1], 4, names[3]);
     partyArray = [partym1,partym2,partym3,partym4];
-    setTimeout(bossAttack(),4000);
+    setTimeout(bossAttack(),3000);
     setTimeout(teamAttack(),6000);
    }
 
@@ -43,6 +43,7 @@ function draw(){
     PlayerPower();
     SummonParty();
     ResourceBars(bossHealth);
+    //console.log(isTaunted + "taunt is on");
     gameover = Lose();
     if(gameover){
         
@@ -61,7 +62,7 @@ function bossAttack(){
         harmpos = round(random(0,3));
         playerhit = CheckTheLoop(harmpos);
         if(partyArray[playerhit].health <= 0){
-            //SwitchPlayer(playerhit);
+            SwitchPlayer(playerhit);
             partyArray[playerhit].health = 0;
             partyArray[playerhit].isDead = true;
         }
@@ -70,13 +71,13 @@ function bossAttack(){
         }
         console.log(harmpos);
         console.log(partyArray[playerhit].health);
-        setTimeout(bossAttack,4000);
+        setTimeout(bossAttack,3000);
     }
-    else if (isTaunted){
+    else if(isTaunted){
         playerhit = isClickedPos;
-        console.log(isTaunted);
+        console.log("hit him!");
         if(partyArray[playerhit].health <= 0){
-            //SwitchPlayer(playerhit);
+            SwitchPlayer(playerhit);
             partyArray[playerhit].health = 0;
             partyArray[playerhit].isDead = true;
         }
@@ -98,7 +99,7 @@ function bossAttack(){
         }
         else{
             if(partyArray[playerhit].health <= 0){
-                //SwitchPlayer(playerhit);
+                SwitchPlayer(playerhit);
                 partyArray[playerhit].health = 0;
                 partyArray[playerhit].isDead = true;
             }
@@ -184,7 +185,7 @@ function PlayerPower(){
 
 function ResourceBars(Bhealth){
     fill('red');
-    rect(200, 200, Bhealth, 10);
+    rect(200, 200, Bhealth / 4, 10);
 }
 
 function CheckTheLoop(number){
@@ -201,7 +202,7 @@ function keyReleased(){
             if (partyArray[i].position == 1){
                 partyArray[i].x = backSpot[0];
                 partyArray[i].y = backSpot[1];
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
                 partyArray[i].position = 4;
                 console.log(partyArray[i].name);
             }
@@ -209,7 +210,7 @@ function keyReleased(){
                 partyArray[i].x = firstSpot[0];
                 partyArray[i].y = firstSpot[1];
                 partyArray[i].position = 1;
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
             }
         }
     }
@@ -218,7 +219,7 @@ function keyReleased(){
             if (partyArray[i].position == 2){
                 partyArray[i].x = backSpot[0];
                 partyArray[i].y = backSpot[1];
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
                 partyArray[i].position = 4;
                 console.log(partyArray[i].name);
             }
@@ -226,7 +227,7 @@ function keyReleased(){
                 partyArray[i].x = secondSpot[0];
                 partyArray[i].y = secondSpot[1];
                 partyArray[i].position = 2;
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
             }
         }
     }
@@ -235,7 +236,7 @@ function keyReleased(){
             if (partyArray[i].position == 3){
                 partyArray[i].x = backSpot[0];
                 partyArray[i].y = backSpot[1];
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
                 partyArray[i].position = 4;
                 console.log(partyArray[i].name);
             }
@@ -243,29 +244,43 @@ function keyReleased(){
                 partyArray[i].x = thirdSpot[0];
                 partyArray[i].y = thirdSpot[1];
                 partyArray[i].position = 3;
-                console.log(partyArray[i].x + partyArray[i.y]);
+                console.log(partyArray[i].x + partyArray[i].y);
             }
         }
     }
 }
 
 function SwitchPlayer(bossPush){
-    var oldX = partyArray[bossPush].x;
-    var oldY = partyArray[bossPush].y;
-
-    for(i = 0; i < 4; i++){
-        if (partyArray[i].position == bossPush){
+    for(i = 0; i < 4; i++){    
+        if (partyArray[i].position == bossPush && bossPush == 1){
             partyArray[i].x = backSpot[0];
             partyArray[i].y = backSpot[1];
-            console.log(partyArray[i].x + partyArray[i.y]);
             partyArray[i].position = 4;
-            console.log(partyArray[i].name);
         }
-        else if(partyArray[i].position == 4){
-            partyArray[i].x = oldX;
-            partyArray[i].y = oldY;
-            partyArray[i].position = bossPush;
-            console.log(partyArray[i].x + partyArray[i.y]);
+        else if(partyArray[i].position == 4 && bossPush == 1){
+            partyArray[i].x = firstSpot[0];
+            partyArray[i].y = firstSpot[1];
+            partyArray[i].position = 1;
+        }
+        else if (partyArray[i].position == bossPush && bossPush == 2){
+            partyArray[i].x = backSpot[0];
+            partyArray[i].y = backSpot[1];
+            partyArray[i].position = 4;
+        }
+        else if(partyArray[i].position == 4 && bossPush == 2){
+            partyArray[i].x = secondSpot[0];
+            partyArray[i].y = secondSpot[1];
+            partyArray[i].position = 2;
+        }
+        else if (partyArray[i].position == bossPush && bossPush == 3){
+            partyArray[i].x = backSpot[0];
+            partyArray[i].y = backSpot[1];
+            partyArray[i].position = 4;
+        }
+        else if(partyArray[i].position == 4 && bossPush == 3){
+            partyArray[i].x = thirdSpot[0];
+            partyArray[i].y = thirdSpot[1];
+            partyArray[i].position = 3;
         }
     }
 }

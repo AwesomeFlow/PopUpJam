@@ -18,26 +18,28 @@ this.isDead = false;
 this.ability = function(partyClicked,partyBack){
     if(!this.isDead){
         if(this.mana > 0){
-            partyBack.mana -= 1;
             if(this.name == "Lamp"){
                 console.log("healing");
+                partyBack.mana -= .5;
                 if(partyClicked.health < 100)
                 partyClicked.health += 1;
                 else
                 console.log("All healed!");
                 }
             else if(this.name == "Pick"){
+                console.log("fighting");
+                partyBack.mana -= .25;
                 this.pickATK = true;
-                //console.log("fighting"); 
-                //console.log(partyClicked.pickAtk);
             }
             else if(this.name == "Shov"){
                 this.shovTank = true;
                 console.log("tanking");
+                partyBack.mana -= .25;
             }
             else if(this.name == "Dyna"){
                 this.dynaTaunt = true;
                 console.log("maging");
+                partyBack.mana -= .25;
             }
         }
         else{
@@ -49,33 +51,6 @@ this.ability = function(partyClicked,partyBack){
 }
 
 this.show = function(){
-    /*push();
-    if(this.name == "Lamp"){
-        image(lampmain,this.x-30,this.y-50);
-    }
-    else if(this.name == "Pick"){
-        image(pickmain,this.x-40,this.y-50);
-    }
-    else if(this.name == "Shov"){
-        image(shovmain,this.x-60,this.y-50);
-    }
-    else if(this.name == "Dyna"){
-        image(dynamain,this.x-30,this.y-50);
-    }
-    pop();
-    
-    push();
-    noStroke();
-    fill(this.SpriteColor);
-    rect(this.x - 30, this.y - 65, this.health, 10);
-    pop();
-
-    push();
-    noStroke();
-    fill(this.SpriteColor);
-    rect(this.x - 30, this.y - 50, this.mana, 10);
-    pop();*/
-
     if(this.position != 4){
         this.changeReso(144,144);
         push();
