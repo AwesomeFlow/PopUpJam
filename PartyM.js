@@ -29,7 +29,7 @@ this.ability = function(partyClicked,partyBack){
         if(this.mana > 0){
             if(this.name == "Lamp"){
                 console.log("healing");
-                partyBack.mana -= .5;
+                partyBack.mana -= .25;
                 if(partyClicked.health < 100)
                 partyClicked.health += 1;
                 else
@@ -96,6 +96,10 @@ this.show = function(){
     else if(this.position == 4 && this.health <= 100 && !this.isDead){
         this.health += .1;
         }
+
+    if(this.health <= 0){
+        this.health = 0;
+    }
 
 }
 

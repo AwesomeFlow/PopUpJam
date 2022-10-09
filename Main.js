@@ -5,7 +5,7 @@ var backSpot = [850,500];
 var names = ["Shov","Pick","Dyna","Lamp"];
 var isClickedPos = 0;
 var bossTotalHealth = 2000;
-var bossHealth = 2000;
+var bossHealth = 1000;
 var isTaunted = false;
 var dmgDown = false;
 var atkUp = false;
@@ -58,6 +58,10 @@ function preload(){
     shovi6= loadImage("assets/anim/shov_idle_6.png");
     shovi7= loadImage("assets/anim/shov_idle_7.png");
     shovi8= loadImage("assets/anim/shov_idle_8.png");
+
+    finger1 = loadImage("assets/FingerGun.png");
+    title = loadImage("assets/Title.png");
+    ending = loadImage("assets/GAMEOVER.png");
 }
 
 function setup() {
@@ -72,23 +76,44 @@ function setup() {
    }
 
 function draw(){
-    background(backmap);
-    SummonParty();
-    hand.show();
-    if(!hasStarted){ //instructions
-        text("TITLE", width/2 - 100, height/2 - 200);
-        text("Survive the fight while the frontliners beat it down!", width/2 - 150, height/2 - 300);
-        text("Hold Left Mouse to use the backline's ability", width/2 - 250, height/2 );
-        text("Movement: Arrow Keys", width/2 - 150, height/2 + 100);
+    //SummonParty();
+    //hand.show();
+
+    if(!hasStarted && !gameover){ //instructions
+        background(title);
+        push();
+        strokeWeight(5);
+        stroke('black');
+        fill('white');
         textSize(40);
+        text("Press Spacebar to Begin", width/2 - 250, height/2 - 200);
+        //text("Survive the fight while the frontliners beat it down!", width/2 - 450, height/2 - 150);
+        text("Hold Left Mouse to use the backline's ability:", width/2 - 400, height/2 - 50);
+        text("Lamp Heals -->", width/2 + 50, height/2 + 225);
+        text("Switch positions", width/2 - 470, height/2 + 100);
+        text("by pressing", width/2 - 440, height/2 + 150);
+        text("1,2, or 3", width/2 - 420, height/2 + 200);
+        pop();
+
+        push();
+        strokeWeight(5);
+        stroke('black');
+        fill('white');
+        textSize(20);
+        text("Shovel tanks", width/2 - 100, height/2 + 10);
+        text("PickAxe Hurts", width/2 + 35, height/2 + 10);
+        text("Mage Taunts", width/2 + 180, height/2 + 10);
+        
+        push();
+        
         if(keyIsDown(32)){
             hasStarted = true;
             setTimeout(bossAttack(),3000);
             setTimeout(teamAttack(),6000);
         }
-        
       }  
-    else if(hasStarted){
+    else if(hasStarted && !gameover){
+        background(backmap);
         console.log(playerhit);
         //hand.show();
         //SummonParty();
@@ -96,10 +121,21 @@ function draw(){
         ResourceBars(bossHealth);
         //console.log(isTaunted + "taunt is on");
         gameover = Lose();
-        if(gameover){
-            
-        }
     }
+    else if(gameover){
+        background(ending);
+        strokeWeight(5);
+        stroke('black');
+        fill('white');
+        textSize(30);
+        text("Credits:", width/2 - 400, height/2 - 245);
+        text("Anthony Melendez: Programmer", width/2 - 400, height/2 - 200);
+        text("Franky Tzo: Programmer", width/2 - 400, height/2 - 150);
+        text("Tomaz Wiercoch: Character Art, Animation", width/2 - 400, height/2 - 100);
+        text("Ken Park: Background Art, Menus", width/2 - 400, height/2 - 60);
+    }
+    SummonParty();
+    hand.show();
 }
 
 function SummonParty(){
@@ -237,7 +273,7 @@ function PlayerPower(){
 
 function ResourceBars(Bhealth){
     fill('red');
-    rect(200, 200, Bhealth / 4, 10);
+    rect(200, 200, Bhealth / 2, 10);
 }
 
 function CheckTheLoop(number){
@@ -338,6 +374,8 @@ function SwitchPlayer(bossPush){
 }
 
 function Lose(){
+    if(bossHealth <= 0)
+        return true;
     for(i = 0; i < 4; i++){
         if(partyArray[i].isDead == false)
             return false;

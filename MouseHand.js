@@ -11,13 +11,16 @@ function MouseHand(){
         noStroke();
         fill(this.SpriteColor);
         if(mouseX >= 380 && mouseX <= 760){
-            ellipse(mouseX, 500, this.r * 2, this.r * 2);
+            //ellipse(mouseX, 500, this.r * 2, this.r * 2);
+            image(finger1, mouseX, 450, this.r * 2, this.r * 2);
             }
         else if(mouseX < 380){
-            ellipse(380, 500, this.r * 2, this.r * 2);
+            //ellipse(380, 500, this.r * 2, this.r * 2);
+            image(finger1, 380, 450, this.r * 2, this.r * 2);
             }
         else if(mouseX > 760){
-            ellipse(760, 500, this.r * 2, this.r * 2);
+            //ellipse(760, 500, this.r * 2, this.r * 2);
+            image(finger1, 380, 450, this.r * 2, this.r * 2);
             }
         }
 
