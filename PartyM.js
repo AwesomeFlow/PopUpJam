@@ -14,6 +14,7 @@ this.shovTank = false;
 this.pickATK = false;
 this.isDead = false;
 
+
 this.ability = function(partyClicked,partyBack){
     if(!isDead){
         if(this.mana > 0){
@@ -49,9 +50,22 @@ this.ability = function(partyClicked,partyBack){
 
 this.show = function(){
     push();
-    noStroke();
-    fill(this.SpriteColor);
-    ellipse(this.x,this.y, this.r * 2, this.r * 2);
+    //noStroke();
+    //fill(this.SpriteColor);
+    //ellipse(this.x,this.y, this.r * 2, this.r * 2);
+    //image(imagevariable,this.x,this.y);
+    if(this.name == "Lamp"){
+        image(lampmain,this.x-30,this.y-50);
+    }
+    else if(this.name == "Pick"){
+        image(pickmain,this.x-40,this.y-50);
+    }
+    else if(this.name == "Shov"){
+        image(shovmain,this.x-60,this.y-50);
+    }
+    else if(this.name == "Dyna"){
+        image(dynamain,this.x-30,this.y-50);
+    }
     pop();
     
     push();

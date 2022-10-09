@@ -29,7 +29,7 @@ function setup() {
    }
 
 function draw(){
-    background(200);
+    background(backmap);
     console.log(playerhit);
     hand.show();
     PlayerPower();
