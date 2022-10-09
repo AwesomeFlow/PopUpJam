@@ -11,9 +11,8 @@ var dmgDown = false;
 var atkUp = false;
 var harmpos;
 var playerhit;
-var damage = 20;
+var damage = 80;
 var totalAttack = 0;
-
 
 
 function setup() {
@@ -25,7 +24,7 @@ function setup() {
     partym3 = new PartyM(thirdSpot[0],thirdSpot[1], 3, names[2]);
     partym4 = new PartyM(backSpot[0],backSpot[1], 4, names[3]);
     partyArray = [partym1,partym2,partym3,partym4];
-    setTimeout(bossAttack(),5000);
+    setTimeout(bossAttack(),4000);
     setTimeout(teamAttack(),6000);
    }
 
@@ -51,22 +50,24 @@ function bossAttack(){
         playerhit = CheckTheLoop(harmpos);
         partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
+            //SwitchPlayer(playerhit);
             partyArray[playerhit].isDead = true;
         }
         console.log(harmpos);
         console.log(partyArray[playerhit].health);
-        setTimeout(bossAttack,5000);
+        setTimeout(bossAttack,4000);
     }
     else if (isTaunted){
         playerhit = isClickedPos;
         console.log(isTaunted);
         partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
+            //SwitchPlayer(playerhit);
             partyArray[playerhit].isDead = true;
         }
         console.log(playerhit);
         console.log(partyArray[playerhit].health);
-        setTimeout(bossAttack,5000);
+        setTimeout(bossAttack,4000);
     }
     if(dmgDown){
         harmpos = round(random(0,3));
@@ -75,11 +76,12 @@ function bossAttack(){
         console.log(playerhit);
         console.log(isClickedPos);
         console.log(partyArray[playerhit].health);
-        setTimeout(bossAttack,5000);
+        setTimeout(bossAttack,4000);
         }
         else{
         partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
+            //SwitchPlayer(playerhit);
             partyArray[playerhit].isDead = true;
         }
         console.log(playerhit);
@@ -221,6 +223,27 @@ function keyReleased(){
                 partyArray[i].position = 3;
                 console.log(partyArray[i].x + partyArray[i.y]);
             }
+        }
+    }
+}
+
+function SwitchPlayer(bossPush){
+    var oldX = partyArray[bossPush].x;
+    var oldY = partyArray[bossPush].y;
+
+    for(i = 0; i < 4; i++){
+        if (partyArray[i].position == bossPush){
+            partyArray[i].x = backSpot[0];
+            partyArray[i].y = backSpot[1];
+            console.log(partyArray[i].x + partyArray[i.y]);
+            partyArray[i].position = 4;
+            console.log(partyArray[i].name);
+        }
+        else if(partyArray[i].position == 4){
+            partyArray[i].x = oldX;
+            partyArray[i].y = oldY;
+            partyArray[i].position = bossPush;
+            console.log(partyArray[i].x + partyArray[i.y]);
         }
     }
 }
