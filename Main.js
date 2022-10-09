@@ -1,13 +1,14 @@
-var firstSpot = [700,450];
-var secondSpot = [800,450];
-var thirdSpot = [900,450];
-var backSpot = [1200,600];
+var firstSpot = [500,350];
+var secondSpot = [600,350];
+var thirdSpot = [700,350];
+var backSpot = [900,500];
 var bossHealth;
-var damage = 50;
+var damage = 5;
+
 
 
 function setup() {
-    createCanvas(1280, 720);
+    createCanvas(960, 540);
     noCursor();
     hand = new MouseHand();
     partym1 = new PartyM(firstSpot[0],firstSpot[1], 1);
@@ -15,15 +16,14 @@ function setup() {
     partym3 = new PartyM(thirdSpot[0],thirdSpot[1], 3);
     partym4 = new PartyM(backSpot[0],backSpot[1], 4);
     partyArray = [partym1,partym2,partym3,partym4];
-    //setTimeout(bossAttack,5000);
+    setTimeout(bossAttack(),5000);
    }
 
 function draw(){
-    background(255);
+    background(200);
     hand.show();
     HealPlayer();
     SummonParty();
-    
     ChangeSpots();
 }
 
@@ -35,8 +35,10 @@ function SummonParty(){
 }
 
 function bossAttack(){
-    harmpos=random(0,2);
-    PartyM.health[harmpos]=PartyM.health[harmpos]-damage;
+    harmpos = round(random(0,2));
+    partyArray[harmpos].health -= damage;
+    console.log(harmpos);
+    console.log(partyArray[harmpos].health);
     setTimeout(bossAttack,5000);
 }
 

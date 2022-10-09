@@ -10,7 +10,7 @@ function MouseHand(){
     this.show = function(){
         noStroke();
         fill(this.SpriteColor);
-        ellipse(mouseX, 500, this.r * 2, this.r * 2);
+        ellipse(mouseX, 400, this.r * 2, this.r * 2);
         }
 
     this.position = function(){
