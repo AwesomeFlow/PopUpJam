@@ -35,7 +35,6 @@ function draw(){
     hand.show();
     PlayerPower();
     SummonParty();
-    ChangeSpots();
     ResourceBars(bossHealth);
 }
 
@@ -48,7 +47,7 @@ function SummonParty(){
 
 function bossAttack(){
     if(!isTaunted){
-        harmpos = round(random(0,2));
+        harmpos = round(random(0,3));
         playerhit = CheckTheLoop(harmpos);
         partyArray[playerhit].health -= damage;
         if(partyArray[playerhit].health <= 0){
@@ -70,7 +69,7 @@ function bossAttack(){
         setTimeout(bossAttack,5000);
     }
     if(dmgDown){
-        harmpos = round(random(0,2));
+        harmpos = round(random(0,3));
         playerhit = CheckTheLoop(harmpos);
         if(playerhit == isClickedPos){
         console.log(playerhit);
@@ -172,57 +171,55 @@ function CheckTheLoop(number){
     return 0;
 }
 
-function ChangeSpots(){
-    if (keyIsPressed) {
-        if(keyCode == 49){
-            for(i = 0; i < 4; i++){
-                if (partyArray[i].position == 1){
-                    partyArray[i].x = backSpot[0];
-                    partyArray[i].y = backSpot[1];
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                    partyArray[i].position = 4;
-                    console.log(partyArray[i].name);
-                }
-                else if(partyArray[i].position == 4){
-                    partyArray[i].x = firstSpot[0];
-                    partyArray[i].y = firstSpot[1];
-                    partyArray[i].position = 1;
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                }
+function keyReleased(){
+    if(keyCode === 49){
+        for(i = 0; i < 4; i++){
+            if (partyArray[i].position == 1){
+                partyArray[i].x = backSpot[0];
+                partyArray[i].y = backSpot[1];
+                console.log(partyArray[i].x + partyArray[i.y]);
+                partyArray[i].position = 4;
+                console.log(partyArray[i].name);
+            }
+            else if(partyArray[i].position == 4){
+                partyArray[i].x = firstSpot[0];
+                partyArray[i].y = firstSpot[1];
+                partyArray[i].position = 1;
+                console.log(partyArray[i].x + partyArray[i.y]);
             }
         }
-        if(keyCode == 50){
-            for(i = 0; i < 4; i++){
-                if (partyArray[i].position == 2){
-                    partyArray[i].x = backSpot[0];
-                    partyArray[i].y = backSpot[1];
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                    partyArray[i].position = 4;
-                    console.log(partyArray[i].name);
-                }
-                else if(partyArray[i].position == 4){
-                    partyArray[i].x = secondSpot[0];
-                    partyArray[i].y = secondSpot[1];
-                    partyArray[i].position = 2;
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                }
+    }
+    if(keyCode === 50){
+        for(i = 0; i < 4; i++){
+            if (partyArray[i].position == 2){
+                partyArray[i].x = backSpot[0];
+                partyArray[i].y = backSpot[1];
+                console.log(partyArray[i].x + partyArray[i.y]);
+                partyArray[i].position = 4;
+                console.log(partyArray[i].name);
+            }
+            else if(partyArray[i].position == 4){
+                partyArray[i].x = secondSpot[0];
+                partyArray[i].y = secondSpot[1];
+                partyArray[i].position = 2;
+                console.log(partyArray[i].x + partyArray[i.y]);
             }
         }
-        if(keyCode == 51){
-            for(i = 0; i < 4; i++){
-                if (partyArray[i].position == 3){
-                    partyArray[i].x = backSpot[0];
-                    partyArray[i].y = backSpot[1];
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                    partyArray[i].position = 4;
-                    console.log(partyArray[i].name);
-                }
-                else if(partyArray[i].position == 4){
-                    partyArray[i].x = thirdSpot[0];
-                    partyArray[i].y = thirdSpot[1];
-                    partyArray[i].position = 3;
-                    console.log(partyArray[i].x + partyArray[i.y]);
-                }
+    }
+    if(keyCode === 51){
+        for(i = 0; i < 4; i++){
+            if (partyArray[i].position == 3){
+                partyArray[i].x = backSpot[0];
+                partyArray[i].y = backSpot[1];
+                console.log(partyArray[i].x + partyArray[i.y]);
+                partyArray[i].position = 4;
+                console.log(partyArray[i].name);
+            }
+            else if(partyArray[i].position == 4){
+                partyArray[i].x = thirdSpot[0];
+                partyArray[i].y = thirdSpot[1];
+                partyArray[i].position = 3;
+                console.log(partyArray[i].x + partyArray[i.y]);
             }
         }
     }

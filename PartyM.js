@@ -53,7 +53,17 @@ this.show = function(){
     push();
     noStroke();
     fill(this.SpriteColor);
-    rect(this.x - 30, this.y - 50, this.health, 10);
+    rect(this.x - 30, this.y - 65, this.health, 10);
     pop();
+
+    push();
+    noStroke();
+    fill(this.SpriteColor);
+    rect(this.x - 30, this.y - 50, this.mana, 10);
+    pop();
+
+    if(this.position != 4 && this.mana <= 100){
+        this.mana += .1;
+    }
     }
 }
