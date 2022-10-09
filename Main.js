@@ -59,7 +59,14 @@ function preload(){
     shovi6= loadImage("assets/anim/shov_idle_6.png");
     shovi7= loadImage("assets/anim/shov_idle_7.png");
     shovi8= loadImage("assets/anim/shov_idle_8.png");
+    
+    //dead
+    shovdead= loadImage("assets/shov_dead.png");
+    pickdead= loadImage("assets/pick_dead.png");
+    lampdead= loadImage("assets/lamp_dead.png");
+    dynadead= loadImage("assets/dyna_dead.png");
 
+    monster = loadImage("assets/monsto.png");
     finger1 = loadImage("assets/FingerGun.png");
     title = loadImage("assets/Title.png");
     ending = loadImage("assets/GAMEOVER.png");
@@ -115,6 +122,7 @@ function draw(){
       }  
     else if(hasStarted && !gameover){
         background(backmap);
+        image(monster,160,25,288,288);
         console.log(playerhit);
         //hand.show();
         //SummonParty();
@@ -131,7 +139,7 @@ function draw(){
         textSize(30);
         text("Credits:", width/2 - 400, height/2 - 245);
         text("Anthony Melendez: Programmer", width/2 - 400, height/2 - 200);
-        text("Franky Tzo: Programmer", width/2 - 400, height/2 - 150);
+        text("Franky Tso: Programmer", width/2 - 400, height/2 - 150);
         text("Tomaz Wiercoch: Character Art, Animation", width/2 - 400, height/2 - 100);
         text("Ken Park: Background Art, Menus", width/2 - 400, height/2 - 60);
     }
@@ -274,7 +282,7 @@ function PlayerPower(){
 
 function ResourceBars(Bhealth){
     fill('red');
-    rect(200, 200, Bhealth / 2, 10);
+    rect(350, 50, Bhealth / 2, 10);
 }
 
 function CheckTheLoop(number){
