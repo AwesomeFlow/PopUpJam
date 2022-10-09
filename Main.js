@@ -10,6 +10,7 @@ var isTaunted = false;
 var dmgDown = false;
 var atkUp = false;
 var gameover = false;
+var hasStarted = false;
 var harmpos;
 var playerhit;
 var damage = 40;
@@ -32,21 +33,36 @@ function setup() {
     partym3 = new PartyM(thirdSpot[0],thirdSpot[1], 3, names[2]);
     partym4 = new PartyM(backSpot[0],backSpot[1], 4, names[3]);
     partyArray = [partym1,partym2,partym3,partym4];
-    setTimeout(bossAttack(),3000);
-    setTimeout(teamAttack(),6000);
    }
 
 function draw(){
     background(backmap);
-    console.log(playerhit);
-    hand.show();
-    PlayerPower();
     SummonParty();
-    ResourceBars(bossHealth);
-    //console.log(isTaunted + "taunt is on");
-    gameover = Lose();
-    if(gameover){
+    hand.show();
+    if(!hasStarted){ //instructions
+        text("TITLE", width/2 - 100, height/2 - 200);
+        text("Survive the fight while the frontliners beat it down!", width/2 - 150, height/2 - 300);
+        text("Hold Left Mouse to use the backline's ability", width/2 - 250, height/2 );
+        text("Movement: Arrow Keys", width/2 - 150, height/2 + 100);
+        textSize(40);
+        if(keyIsDown(32)){
+            hasStarted = true;
+            setTimeout(bossAttack(),3000);
+            setTimeout(teamAttack(),6000);
+        }
         
+      }  
+    else if(hasStarted){
+        console.log(playerhit);
+        //hand.show();
+        //SummonParty();
+        PlayerPower();
+        ResourceBars(bossHealth);
+        //console.log(isTaunted + "taunt is on");
+        gameover = Lose();
+        if(gameover){
+            
+        }
     }
 }
 
