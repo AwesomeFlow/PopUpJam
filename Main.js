@@ -2,6 +2,9 @@ var firstSpot = [700,450];
 var secondSpot = [800,450];
 var thirdSpot = [900,450];
 var backSpot = [1200,600];
+var bossHealth;
+var damage = 50;
+
 
 function setup() {
     createCanvas(1280, 720);
@@ -12,6 +15,7 @@ function setup() {
     partym3 = new PartyM(thirdSpot[0],thirdSpot[1], 3);
     partym4 = new PartyM(backSpot[0],backSpot[1], 4);
     partyArray = [partym1,partym2,partym3,partym4];
+    //setTimeout(bossAttack,5000);
    }
 
 function draw(){
@@ -29,6 +33,12 @@ function SummonParty(){
     partym3.show();
     partym4.show();
 }
+
+function bossAttack(){
+    harmpos=random(0,2);
+    setTimeout(bossAttack,5000);
+}
+
 
 function ChangeSpots(){
     if (keyIsPressed) {
